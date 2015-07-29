@@ -1,0 +1,51 @@
+﻿@model FlintnTinderJobApp.Models.JobObject
+@{
+    ViewBag.Title = "Retrieve All Jobs ";
+}
+
+<h2>Jobs</h2>
+@using (Html.BeginForm("GetAllJobs", "Job", FormMethod.Get))
+{
+    <b>Search</b>
+    @Html.TextBox("search") <input type="submit" value="Search" />
+}
+<div class="Table">
+    <table style="width:100%">
+  @*<tr>
+    <td><b>Client</b></td>
+    <td><b>Job Number</b></td> 
+    <td><b>Job Name</b></td> 
+    <td><b>Due</b></td> 
+    <td><b>Status</b></td> 
+  </tr>*@
+        <tr>
+            <th>
+                <b>Client</b>
+            </th>
+            <th>
+                <b>Job Number</b>
+            </th>
+            <th>
+                <b>Job Name</b>
+            </th>
+            <th>
+               <b>Due</b>
+            </th>
+            <th>
+                <b>Status</b>
+            </th>
+        </tr>
+         @for (int i = 0; i < Model.jobs.Count; i++)
+      {  
+  <tr>
+        
+    <td>@Model.jobs[i].Client</td>
+    <td>@Model.jobs[i].JobName</td> 
+    <td>@Model.jobs[i].JobNumber</td>
+    <td>@Model.jobs[i].Due</td>
+    <td>@Model.jobs[i].Status</td>
+      
+  </tr>
+         }
+</table>
+</div>
